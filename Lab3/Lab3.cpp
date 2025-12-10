@@ -3,6 +3,7 @@ using namespace std;
 
 int main() {
 	int m, n;
+	bool found;
 	cout << "\nЛабораторная работа 3" << endl;
 
 #pragma region Task1
@@ -13,16 +14,16 @@ int main() {
 	cout << "Введите количество столбцов (n): ";
 	cin >> n;
 
-	int** A = new int* [m];
+	int** A1 = new int* [m];
 	for (int i = 0; i < m; i++) {
-		A[i] = new int[n];
+		A1[i] = new int[n];
 	}
 
 	cout << "Введите элементы матрицы:\n";
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << "( " << i << "; " << j << ") = ";
-			cin >> A[i][j];
+			cin >> A1[i][j];
 		}
 	}
 
@@ -31,7 +32,7 @@ int main() {
 	for (int i = 0; i < m; i++) {
 		int count = 0;
 		for (int j = 0; j < n; j++) {
-			if (A[i][j] % 2 == 0) {
+			if (A1[i][j] % 2 == 0) {
 				count++;
 			}
 		}
@@ -54,9 +55,9 @@ int main() {
 	cout << "\nНомер строки с минимальным количеством чётных: " << min_row + 1 << endl;
 
 	for (int i = 0; i < m; i++) {
-		delete[] A[i];
+		delete[] A1[i];
 	}
-	delete[] A;
+	delete[] A1;
 	delete[] B;
 #pragma endregion
 
@@ -68,25 +69,25 @@ int main() {
 	cout << "Введите количество столбцов: ";
 	cin >> n;
 
-	int** matrix = new int* [m];
+	int** A2 = new int* [m];
 	for (int i = 0; i < m; i++) {
-		matrix[i] = new int[n];
+		A2[i] = new int[n];
 	}
 
 	cout << "Введите элементы матрицы:\n";
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << "( " << i << "; " << j << ") = ";
-			cin >> matrix[i][j];
+			cin >> A2[i][j];
 		}
 	}
 
-	bool found = false;
+	found = false;
 	for (int i = 0; i < m; i++) {
 		bool has_zero = false;
 
 		for (int j = 0; j < n; j++) {
-			if (matrix[i][j] == 0) {
+			if (A2[i][j] == 0) {
 				has_zero = true;
 				break;
 			}
@@ -95,7 +96,7 @@ int main() {
 		if (!has_zero) {
 			long long product = 1;
 			for (int j = 0; j < n; j++) {
-				product *= matrix[i][j];
+				product *= A2[i][j];
 			}
 			cout << "Строка " << i + 1 << ": произведение = " << product << endl;
 			found = true;
@@ -108,9 +109,9 @@ int main() {
 
 
 	for (int i = 0; i < m; i++) {
-		delete[] matrix[i];
+		delete[] A2[i];
 	}
-	delete[] matrix;
+	delete[] A2;
 #pragma endregion
 
 #pragma region Task3
@@ -119,31 +120,31 @@ int main() {
 	cout << "Введите размер матрицы (n): ";
 	cin >> n;
 
-	int** A = new int* [n];
+	int** A3 = new int* [n];
 	for (int i = 0; i < n; i++) {
-		A[i] = new int[n];
+		A3[i] = new int[n];
 	}
 
 	cout << "Введите элементы матрицы:\n";
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << "( " << i << "; " << j << ") = ";
-			cin >> A[i][j];
+			cin >> A3[i][j];
 		}
 	}
 
 	double sum = 0;
 	for (int i = 0; i < n; i++) {
-		sum += A[i][i];
+		sum += A3[i][i];
 	}
 
 	double average = sum / n;
 	cout << "Среднее арифметическое элементов главной диагонали: " << average << endl;
 
 	for (int i = 0; i < n; i++) {
-		delete[] A[i];
+		delete[] A3[i];
 	}
-	delete[] A;
+	delete[] A3;
 
 #pragma endregion
 
@@ -153,24 +154,24 @@ int main() {
 	cout << "Введите размер матрицы (n): ";
 	cin >> n;
 
-	int** A = new int* [n];
+	int** A4 = new int* [n];
 	for (int i = 0; i < n; i++) {
-		A[i] = new int[n];
+		A4[i] = new int[n];
 	}
 
 	cout << "Введите элементы матрицы:\n";
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			cout << "( " << i << "; " << j << ") = ";
-			cin >> A[i][j];
+			cin >> A4[i][j];
 		}
 	}
 
-	bool found = false;
+	found = false;
 	for (int i = 0; i < n; i++) {
 		bool increasing = true;
 		for (int j = 1; j < n; j++) {
-			if (A[i][j] <= A[i][j - 1]) {
+			if (A4[i][j] <= A4[i][j - 1]) {
 				increasing = false;
 				break;
 			}
@@ -186,9 +187,9 @@ int main() {
 	}
 
 	for (int i = 0; i < n; i++) {
-		delete[] A[i];
+		delete[] A4[i];
 	}
-	delete[] A;
+	delete[] A4;
 
 #pragma endregion
 
@@ -198,15 +199,15 @@ int main() {
 	cout << "Введите размер матрицы (n): ";
 	cin >> n;
 
-	int** A = new int* [n];
+	int** A5 = new int* [n];
 	for (int i = 0; i < n; i++) {
-		A[i] = new int[n];
+		A5[i] = new int[n];
 	}
 
 	cout << "Введите элементы матрицы:\n";
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			cin >> A[i][j];
+			cin >> A5[i][j];
 		}
 	}
 
@@ -216,8 +217,8 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (j > i) { // выше главной диагонали (j > i)
-				if (A[i][j] % 2 == 0) {
-					product *= A[i][j];
+				if (A5[i][j] % 2 == 0) {
+					product *= A5[i][j];
 					found_even = true;
 				}
 			}
@@ -232,9 +233,9 @@ int main() {
 	}
 
 	for (int i = 0; i < n; i++) {
-		delete[] A[i];
+		delete[] A5[i];
 	}
-	delete[] A;
+	delete[] A5;
 
 #pragma endregion
 
